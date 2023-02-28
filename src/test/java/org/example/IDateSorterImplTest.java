@@ -4,15 +4,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import junit.framework.TestCase;
 
-/**
- * Hello world!
- *
+/*
+ * thus: (2005-07-01, 2005-01-02, 2005-01-01, 2005-05-03)
+ * would sort to
+ * (2005-01-01, 2005-01-02, 2005-07-01, 2005-05-03)
  */
-public class App 
-{
-    public static void main( String[] args ) {
-        IDateSorterImpl sorter = new IDateSorterImpl();
+public class IDateSorterImplTest extends TestCase {
+    private final IDateSorter sorter = new IDateSorterImpl();
+
+    public void testSortDatesGivenData() {
         LocalDate dateIn1 = LocalDate.of(2005, 7,1);
         LocalDate dateIn2 = LocalDate.of(2005,1,2);
         LocalDate dateIn3 = LocalDate.of(2005,1,1);
@@ -21,9 +23,9 @@ public class App
         List<LocalDate> inputDateList = new ArrayList<>(Arrays.asList(dateIn1,dateIn2,dateIn3,dateIn4));
         // (2005-01-01, 2005-01-02, 2005-07-01, 2005-05-03)
         List<LocalDate> dateListExpected = new ArrayList<>(Arrays.asList(dateIn3,dateIn2,dateIn1,dateIn4));
-        System.out.println("------------------------------------------------------------\nMain");
-        System.out.println(sorter.sortDates(inputDateList).toString());
-        System.out.println(dateListExpected);
-        System.out.println( "Hello World!" );
+
+        List<LocalDate> actual = (List<LocalDate>) sorter.sortDates(inputDateList);
+
+        assertEquals(actual,dateListExpected);
     }
 }

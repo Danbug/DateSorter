@@ -8,8 +8,8 @@ import java.util.List;
  * Marking will be based upon producing a readable, well engineered solution rather than factors
  * such as speed of processing or other performance-based optimizations, which are less
  * important.
- *
- *
+ * <p>
+ * <p>
  * The Date sorter interface, implement the single method
  * within this interface.
  */
