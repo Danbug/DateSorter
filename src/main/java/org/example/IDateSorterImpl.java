@@ -63,6 +63,8 @@ public class IDateSorterImpl implements IDateSorter {
                 dateListWithoutLetterR.add(localDate);
             }
         }
+
+        // list where we will store all Sorted dates
         List<LocalDate> sortedDates = new ArrayList<>();
         sortedDates.addAll(sortAscending(dateListWithLetterR));
         sortedDates.addAll(sortDescending(dateListWithoutLetterR));
