@@ -3,6 +3,7 @@ package org.example;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,6 +52,9 @@ public class IDateSorterImpl implements IDateSorter {
      */
     @Override
     public Collection<LocalDate> sortDates(List<LocalDate> unsortedDates) {
+        if (unsortedDates == null || unsortedDates.size() == 0) {
+            return Collections.emptyList();
+        }
         List<LocalDate> dateListWithLetterR = new ArrayList<>();
         List<LocalDate> dateListWithoutLetterR = new ArrayList<>();
 

@@ -3,6 +3,7 @@ package org.example;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import junit.framework.TestCase;
 
@@ -25,6 +26,26 @@ import junit.framework.TestCase;
  */
 public class IDateSorterImplTest extends TestCase {
     private final IDateSorter sorter = new IDateSorterImpl();
+
+    public void testEmptyList() {
+        List<LocalDate> inputDateList = Collections.emptyList();
+
+        List<LocalDate> dateListExpected = Collections.emptyList();
+
+        List<LocalDate> actual = (List<LocalDate>) sorter.sortDates(inputDateList);
+
+        assertEquals(actual, dateListExpected);
+    }
+
+    public void testNull() {
+        List<LocalDate> inputDateList = null;
+
+        List<LocalDate> dateListExpected = Collections.emptyList();
+
+        List<LocalDate> actual = (List<LocalDate>) sorter.sortDates(inputDateList);
+
+        assertEquals(actual, dateListExpected);
+    }
 
     public void testAllMonthsWithRAlreadySorted() {
         LocalDate dateIn1 = LocalDate.of(2005, 1, 1);
